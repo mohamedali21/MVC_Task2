@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVC_Task2.Models.ProductVM>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<ul class="product-list-vertical">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="#" class="product-photo">
+                <img src="~/Content/Images/@item.Img_Url" height="160" alt="@item.Img_Url" />
+            </a>
+            <div class="product-details">
+                <a href="#" class="product-compare">compare</a>
+                <h2><a href="#">@item.Name</a></h2>
+                <div class="product-rating">
+                    <div>
+                        <span class="product-stars" style="width: cal(@item.Rate*15)">
+
+                                    @for (int i = 0; i < item.Rate; i++)
+                                    {
+                                        <i class="fa fa-star" style="margin:0;padding:0"></i>
+                                    }
+                             
+                        </span>
+                    </div>
+                    <span><a href="#">@item.NumOfReviews reviews</a></span>
+                </div>
+
+                <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
+                <button>Buy Now!</button>
+                <p class="product-price">$@item.Price</p>
+            </div>
+        </li>
+    }
+    @*<li>
+        <a href="#" class="product-photo">
+            <img src="~/Content/Images/htc-one.jpg" height="160" alt="Sony Xperia Z3" />
+        </a>
+        <div class="product-details">
+            <a href="#" class="product-compare">compare</a>
+            <h2><a href="#">HTC One</a></h2>
+            <div class="product-rating">
+                <div>
+                    <span class="product-stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </span>
+                </div>
+                <span><a href="#">43 reviews</a></span>
+            </div>
+
+            <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
+            <button>Buy Now!</button>
+            <p class="product-price">$599.00</p>
+        </div>
+    </li>*@
+</ul>
