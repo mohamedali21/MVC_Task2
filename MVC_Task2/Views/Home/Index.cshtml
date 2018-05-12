@@ -32,7 +32,7 @@
                 }
                 <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
                 
-                @Html.ActionLink("Buy", "Buy", new { productID = item.Id }, new { @class = "btn btn-primary" })
+                @Ajax.ActionLink("Buy", "Buy", new { productID = item.Id }, new AjaxOptions() { HttpMethod = "Get" }, new { @class = "btn btn-primary" })
                 <p class="product-price">$@item.Price</p>
             </div>
         </li>
