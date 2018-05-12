@@ -26,32 +26,42 @@
                     </div>
                     <span><a href="#">@item.NumOfReviews reviews</a></span>
                 </div>
-
+                @{
+                    var x = "qty" + item.Id.ToString();
+                    <div id="@x" style="margin-top:5px"><h4>@item.Quantity Pieces</h4></div>
+                }
                 <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
-                <button>Buy Now!</button>
+                
+                @Html.ActionLink("Buy", "Buy", new { productID = item.Id }, new { @class = "btn btn-primary" })
                 <p class="product-price">$@item.Price</p>
             </div>
         </li>
     }
-    @*<li>
-        <a href="#" class="product-photo">
-            <img src="~/Content/Images/htc-one.jpg" height="160" alt="Sony Xperia Z3" />
-        </a>
-        <div class="product-details">
-            <a href="#" class="product-compare">compare</a>
-            <h2><a href="#">HTC One</a></h2>
-            <div class="product-rating">
-                <div>
-                    <span class="product-stars">
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    </span>
-                </div>
-                <span><a href="#">43 reviews</a></span>
-            </div>
-
-            <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare sem sed nisl dignissim, facilisis dapibus lacus vulputate. Sed lacinia lacinia magna.</p>
-            <button>Buy Now!</button>
-            <p class="product-price">$599.00</p>
-        </div>
-    </li>*@
 </ul>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/signalr")
+    <script src="/signalr/js">
+
+    </script>
+    <script>
+            var proxy = $.connection.ChangeQty;
+            $.connection.hub.start().done(
+                function () {
+
+                });
+            proxy.client.QtyChange = function (id, qty) {
+
+                $("#qty" + id).html("<h4>"+qty+" Pieces</h4>");
+
+            }
+    </script>
+}
+
+
+
+
+
+
+
+
