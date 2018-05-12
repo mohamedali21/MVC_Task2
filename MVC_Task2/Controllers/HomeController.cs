@@ -104,7 +104,6 @@ namespace MVC_Task2.Controllers
             product.Quantity--;
             db.SaveChanges();
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<ChangeQty>();
-            //hubContext.Clients.All.DeptChange(department);
             hubContext.Clients.All.QtyChange(product.Id, product.Quantity);
             return RedirectToAction("Index");
         }
